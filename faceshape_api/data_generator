@@ -1,0 +1,54 @@
+import os
+import requests
+from bs4 import BeautifulSoup
+from urllib.parse import quote_plus
+
+def download_images_from_google(query, num_images, save_directory):
+    url = f"https://www.google.com/search?q={quote_plus(query)}&tbm=isch"
+
+    # HTTP GET 요청으로 웹페이지 가져오기
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
+    response = requests.get(url, headers=headers)
+    response.raise_for_status()
+
+    # BeautifulSoup를 사용하여 HTML 파싱
+    soup = BeautifulSoup(response.text, 'html.parser')
+
+    # 이미지 태그 모두 찾기 (일반적으로 <img> 태그에 이미지 URL이 포함됩니다)
+    img_tags = soup.find_all('img', limit=num_images)
+
+    # 이미지를 저장할 디렉토리 생성
+    os.makedirs(save_directory, exist_ok=True)
+
+    for i, img_tag in enumerate(img_tags):
+        try:
+            # 이미지 URL 추출
+            img_url = img_tag['src']
+
+            # 이미지 다운로드
+            img_response = requests.get(img_url)
+            img_response.raise_for_status()
+
+            # 이미지 파일 저장
+            img_filename = f"{query}_{i}.jpg"
+            img_filepath = os.path.join(save_directory, img_filename)
+            with open(img_filepath, 'wb') as img_file:
+                img_file.write(img_response.content)
+
+            print(f"이미지 다운로드 완료: {img_filename}")
+
+        except Exception as e:
+            print(f"이미지 다운로드 실패: {str(e)}")
+
+if __name__ == "__main__":
+    # 검색어 설정
+    search_query = "손담비 사진"  # 원하는 검색어로 변경해주세요
+
+    # 가져올 이미지 수 설정
+    num_images_to_download = 20  # 가져올 이미지의 수로 변경해주세요
+
+    # 이미지를 저장할 디렉토리 설정
+    save_directory = "./dataset/네모형,각진형"  # 다운로드 받은 이미지를 저장할 폴더 이름으로 변경해주세요
+
+    # 이미지 검색 결과 다운로드
+    download_images_from_google(search_query, num_images_to_download, save_directory)
