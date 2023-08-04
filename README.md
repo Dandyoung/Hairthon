@@ -10,14 +10,8 @@
 └───────────────────────────────────────────────┘
 ```
 
-# goormIDE
-Welcome to goormIDE!
-
-goormIDE is a powerful cloud IDE service to maximize productivity for developers and teams.  
-**DEVELOP WITH EXCELLENCE**  
-
-`Happy coding! The goormIDE team`
-
+# Hairthon
+안녕하세요 조코딩 해커톤 참가팀입니다.
 
 ## 🔧 Tip & Guide
 
@@ -40,8 +34,3 @@ goormIDE is a powerful cloud IDE service to maximize productivity for developers
 | New Terminal       | ⌥ + ⇧ + T     | Alt + Shift + T  |
 | Code Formatting    | ⌥ + ⇧ + P     | Alt + Shift + P  |
 | Show All Shortcuts | ⌘ + H         | Ctrl + H         |
-
-## 💬 Support & Documentation
-
-Visit [https://ide.goorm.io](https://ide.goorm.io) to support and learn more about using goormIDE.  
-To watch some usage guides, visit [https://help.goorm.io/en/goormide](https://help.goorm.io/en/goormide)
