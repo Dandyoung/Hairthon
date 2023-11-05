@@ -65,4 +65,4 @@
 
 
 ## 📝그 외
-프론트앤드 배포 url : 
+프론트앤드 배포 url : https://github.com/hairthon/hairthon_client
