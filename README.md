@@ -25,6 +25,7 @@
 
 ## 🔎프로젝트 정보
 > 원티드X유데미X조코딩 AI 해커톤
+> 
 > 개발 기간: 2023.7.22 ~ 2022.8.5 (2주) 
 
 <br><br>
@@ -38,54 +39,29 @@
 > 기술 스택 : Python(Flask), React(Next.js), Tensorflow, Pytorch, OpenCV, Figma
 > 
 ## 🙋‍♀️팀원 소개
-|<img width="300" src="https://github.com/DAUOpenSW/Kind_Words_Cloud/assets/91776984/1f6c5417-5801-4748-866d-d260fcd5c36b"/>|<img width="300" src="https://github.com/DAUOpenSW/Kind_Words_Cloud/assets/91776984/21996af7-da7f-4559-bca5-6486a4eb5f4f"/>|<img width="300" src="https://github.com/DAUOpenSW/Kind_Words_Cloud/assets/91776984/001b876f-cbe4-4ed3-8fa5-9009ab4b2bb7"/>|<img width="300" src="https://github.com/DAUOpenSW/Kind_Words_Cloud/assets/91776984/38fc7d5d-df49-47a3-b302-ea6993a839dd"/>|<img width="300" src="https://github.com/DAUOpenSW/Kind_Words_Cloud/assets/91776984/725920a7-f2d2-4b60-a9ae-c6ff4cd12440"/>|
-|:---:|:---:|:---:|:---:|:---:|
-|컴퓨터공학과<br>4학년|컴퓨터공학과<br>4학년|컴퓨터공학과<br>4학년|컴퓨터공학과<br>4학년|컴퓨터공학과<br>4학년|
-| [김현우](https://github.com/HIT18216) | [김혜영](https://github.com/hyeyeoung) | [박성민](https://github.com/ParkSeungMin1) | [서지헌](https://github.com/MyCoooi) | [이영우](https://github.com/Dandyoung) |
-|개발|PM|개발|개발|개발|
 
 <br><br><br>
-
-# 모델
-Bidirectional-LSTM을 사용하였고 어텐션 메커니즘을 적용하여 욕설 마스킹 기능을 구현했습니다. 
+# 주요 기능
+1. **얼굴형 분석**: 사용자의 얼굴 사진을 업로드하면, 사용자의 윤곽, 이마 크기, 턱선 형태 등을 고려해 얼굴형을 분석합니다. 이를 통해 사용자의 얼굴형과 어올리는 헤어스타일에 대한 정보를 제공합니다.
 <br>
-Google Cloud STT API를 사용하여 Time Stamp 및 STT를 구현하였습니다.
+2. **원하는 머리스타일 합성:** 사용자가 원하는 다양한 헤어스타일을 자연스럽게 가상으로 시착할 수 있는 시뮬레이션을 제공합니다. 이를 통해 사용자는 헤어스타일을 실제로 시도해보기 전에 직접 자신의 얼굴에 어울리는 여러 헤어스타일을 비교 분석할 수 있습니다.
 <br>
-Pydub 라이브러리를 활용하여 오디오 블러처리를 구현하였습니다.
+3. **이미지 해상도 업스케일링** : 사용자가 저화질의 이미지를 업로드하여도, 만족도 높은 결과를 위해 x4배 해상도를 업스케일링하여 합성모델에 넣어줍니다.
 
-모델 구조는 아래와 같습니다
+# 사용 모델
+- 얼굴형 분석 모델: 얼굴형 분석은 빠르면서 정량적으로 좋은 [ShuffleNetV2](https://github.com/Randl/ShuffleNetV2-pytorch) 에서 참고하여 학습했습니다.
+<br>
+- 얼굴 헤어스타일 합성 모델: 원하는 머리스타일과 내 얼굴을 합성할 땐, 얼굴의 이미지에서 얼굴의 형태와 머리스타일의 데이터를 stylegan2로 재생성하는 ****[Hairstyle Transfer between Face Images](https://cmp.felk.cvut.cz/hairstyles/)****의 논문을 사용하였습니다.
+<br>
+- 이미지 업스케일링 모델: 얼굴 헤어스타일 합성 모델에서의 실험결과, 좋은 해상도의 이미지 일수록 좋은 합성결과를 가져오기에 [Real-ESRGAN](https://github.com/ai-forever/Real-ESRGAN)을 통해, 합성모델에서의 좋은 결과를 가져오고자 했습니다.
 
-![1](src/imgs/model.png)
 
 더 자세한 내용은 [코드](https://github.com/DAUOpenSW/PVMM/blob/main/src/models.py)를 참고해 주세요.
 
 # 데이터
 
-욕설 데이터셋은 약 41,000개의 문장에 대해 욕설 여부를 분류한 데이터셋입니다.
+기존의 데이터는 Face Shape Dataset 데이터를 사용하였습니다. 이후, 한국인 얼굴에 대한 일반화시키기위해 Kaggle의 데이터 세트로 학습 데이터를 변경하여 모델 학습을 진행했습니다
 
-![dataset](/src/imgs/dataset_table.png)
-
-# 학습 과정
-## 1. 전처리
-
-- 연속적인 글자 단축 (ㅋㅋㅋㅋ → ㅋㅋ)
-- 초성, 중성, 종성으로 분리 (안녕 → ㅇㅏㄴㄴㅕㅇ)
-
-## 2. 임베딩**
-
-- **fasttext 임베딩**
-
-  fasttext를 활용하여 의미 기반의 임베딩 수행
-  
-  이 레포지토리에선 미리 학습된 fasttext 모델을 사용합니다.
-  
-  때문에 예측을 위해선 fasttext 모델이 `embedding_models`폴더에 `fasttext.bin`이라는 이름으로 옮겨져 있어야 합니다.
-  
-  fasttext 모델은 [여기](https://drive.google.com/file/d/1kW7cRDRe7HMQskSytv9gUbkUFhG8LrIn/view?usp=drive_link)에서 다운로드받을 수 있습니다.
-  
-- **mfcc 임베딩**
-
-  비슷한 발음의 단어를 비슷한 벡터로 임베딩 (MFCC 알고리즘 활용)
 
 ## 📝Ref
-https://github.com/2runo/Curse-detection-v2
+프론트앤드 배포 : 
