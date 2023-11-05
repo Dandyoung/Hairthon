@@ -1,8 +1,7 @@
 # Hairthon
 # 프로젝트 발표 영상(.txt, 문자열 블러 처리)
 
-[![Video Label](/src/imgs/logo.png)]([https://youtu.be/9pCCKXYSrt8?si=SUoRJZ16m9R-fcXL](https://www.youtube.com/watch?v=g-hA8vYcROk#t=31m54s
-))
+[![Video Label](/src/imgs/logo.png)]([https://youtu.be/9pCCKXYSrt8?si=SUoRJZ16m9R-fcXL](https://www.youtube.com/watch?v=g-hA8vYcROk#t=31m54s))
 
 ##### 이미지를 누르면 시연영상을 확인할 수 있습니다.
 
@@ -25,16 +24,19 @@
 <br><br>
 
 ## 🔎프로젝트 정보
-> 동아대학교 컴퓨터공학과 학생 팀  
-> 개발 기간: 2023.07.14 ~
+> 원티드X유데미X조코딩 AI 해커톤
+> 개발 기간: 2023.7.22 ~ 2022.8.5 (2주) 
 
 <br><br>
 
 ## 🖐프로젝트 소개
-> 본 프로젝트는 2023 공개SW 개발자 대회 출품작으로, 머신러닝을 이용한 실시간 음성 한국어 욕설 필터링 시스템을 API 서비스로 제공하는 프로젝트입니다.
+> 본 프로젝트는 2023 공개SW 원티드X유데미X조코딩 AI 해커톤 출품작으로, semyir은 인공지능 모델로 개인의 얼굴형을 분석하거나, 본인이 원하는 머리스타일과 합성해볼 수 있는 웹 서비스입니다.
+> 다양한 머리를 시도하기 좋아하는 분들, 평소에 자신의 얼굴에 어울리는 머리스타일을 찾던 사람들을 위한 실용적인 솔루션입니다.
 
 <br><br>
-
+> 참여 인원 : 5인(백앤드 2명, 프론트앤드 2명, AI 앤지니어 2명)
+> 기술 스택 : Python(Flask), React(Next.js), Tensorflow, Pytorch, OpenCV, Figma
+> 
 ## 🙋‍♀️팀원 소개
 |<img width="300" src="https://github.com/DAUOpenSW/Kind_Words_Cloud/assets/91776984/1f6c5417-5801-4748-866d-d260fcd5c36b"/>|<img width="300" src="https://github.com/DAUOpenSW/Kind_Words_Cloud/assets/91776984/21996af7-da7f-4559-bca5-6486a4eb5f4f"/>|<img width="300" src="https://github.com/DAUOpenSW/Kind_Words_Cloud/assets/91776984/001b876f-cbe4-4ed3-8fa5-9009ab4b2bb7"/>|<img width="300" src="https://github.com/DAUOpenSW/Kind_Words_Cloud/assets/91776984/38fc7d5d-df49-47a3-b302-ea6993a839dd"/>|<img width="300" src="https://github.com/DAUOpenSW/Kind_Words_Cloud/assets/91776984/725920a7-f2d2-4b60-a9ae-c6ff4cd12440"/>|
 |:---:|:---:|:---:|:---:|:---:|
