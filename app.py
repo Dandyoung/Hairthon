@@ -9,6 +9,7 @@ from torch.utils.data import Dataset
 import torchvision.transforms as transforms
 from torchvision.datasets import ImageFolder
 # 옵션을 선언해주면 에러가 발생하지 않습니다.
+# 없어되긴한데 있어야함.
 from PIL import ImageFile
 from torchvision import transforms
 from flask import Flask, request, jsonify
