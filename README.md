@@ -3,7 +3,7 @@
 
 [![Video Label](/src/imgs/logo.png)](https://www.youtube.com/watch?v=g-hA8vYcROk#t=31m54s)
 
-##### 이미지를 누르면 시연영상을 확인할 수 있습니다.
+##### 이미지를 누르면 시연영상을 확인할 수 있습니다..
 
 
 <br><br>
